@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Calculate GST (Goods and Services Tax) easily with different tax rates - 5%, 12%, 18%, and 28%">
+    <meta name="keywords" content="GST calculator, tax calculator, India GST, goods and services tax">
+    <title>GST Calculator - Calculate Goods and Services Tax</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<main class="container">
+    <!-- Header Section -->
+    <header>
+        <h1>GST Calculator</h1>
+        <p class="subtitle">Calculate Goods and Services Tax instantly</p>
+    </header>
+
+    <!-- Calculator Form -->
+    <form id="gst-form" onsubmit="event.preventDefault(); calculateGST();" novalidate>
+        
+        <!-- Amount Input -->
+        <div class="input-group">
+            <label for="amount">Amount (₹) <span class="required">*</span></label>
+            <input 
+                type="number" 
+                id="amount" 
+                name="amount"
+                placeholder="Enter amount" 
+                min="0"
+                step="0.01"
+                required
+                aria-required="true"
+                aria-describedby="amount-help"
+            >
+            <small id="amount-help" class="help-text">Enter the base amount before GST</small>
+        </div>
+
+        <!-- GST Rate Selection -->
+        <div class="input-group">
+            <label for="rate">GST Rate (%) <span class="required">*</span></label>
+            <select 
+                id="rate" 
+                name="rate"
+                required
+                aria-required="true"
+                aria-describedby="rate-help"
+            >
+                <option value="5">5% - Essential goods</option>
+                <option value="12">12% - Standard goods</option>
+                <option value="18" selected>18% - Most goods & services</option>
+                <option value="28">28% - Luxury items</option>
+            </select>
+            <small id="rate-help" class="help-text">Select applicable GST rate</small>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="button-group">
+            <button type="submit" class="btn btn-primary">
+                <span>Calculate GST</span>
+            </button>
+            <button type="button" class="btn btn-secondary" onclick="resetCalculator()">
+                <span>Reset</span>
+            </button>
+        </div>
+    </form>
+
+    <!-- Results Section -->
+    <section class="output" id="results" aria-live="polite">
+        <h2 class="output-title">Calculation Results</h2>
+        
+        <div class="result-item">
+            <span class="result-label">Base Amount:</span>
+            <span class="result-value">₹ <span id="base">0.00</span></span>
+        </div>
+        
+        <div class="result-item highlight">
+            <span class="result-label">GST Amount:</span>
+            <span class="result-value">₹ <span id="gst">0.00</span></span>
+        </div>
+        
+        <div class="result-item total">
+            <span class="result-label">Total Amount:</span>
+            <span class="result-value">₹ <span id="total">0.00</span></span>
+        </div>
+    </section>
+
+    <!-- Info Section -->
+    <footer class="info-section">
+        <details>
+            <summary>About GST Rates in India</summary>
+            <ul>
+                <li><strong>5%:</strong> Essential items like food grains, medicines</li>
+                <li><strong>12%:</strong> Processed food, computers</li>
+                <li><strong>18%:</strong> Most goods and services</li>
+                <li><strong>28%:</strong> Luxury items, automobiles</li>
+            </ul>
+        </details>
+    </footer>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
